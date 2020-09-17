@@ -1,0 +1,99 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Quản lý lương  nhân viên</h4>
+    <div class="row">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3">Tháng nam</span>
+        </div>
+        <input type="month" name="date" [(ngModel)]="date" (change)="onchaneDate()"  >
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control"  placeholder="Nhập tên hoặc id để tìm kiếm" aria-label="Recipient's username"
+          aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-success"  type="button">Tìm kiếm</button>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="table-responsive">
+          <div id="order-listing_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+            <div class="row">
+              <div class="col-sm-12">
+                <table id="order-listing" class="table dataTable no-footer" role="grid"
+                  aria-describedby="order-listing_info">
+                  <thead>
+                    <tr role="row">
+                      <th class="sorting_asc" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1"
+                      aria-sort="ascending" aria-label="Order #: activate to sort column descending"
+                      style="width: 67px;">Mã Nhân viên
+                    </th>
+                      <th class="sorting_asc" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1"
+                        aria-sort="ascending" aria-label="Order #: activate to sort column descending"
+                        style="width: 67px;">Tên Nhân viên
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1"
+                        aria-label="Purchased On: activate to sort column ascending" style="width: 117.4px;">
+                        kỷ luật</th>
+                      <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1"
+                        aria-label="Customer: activate to sort column ascending" style="width: 85.4px;">
+                        Hệ Sô</th>
+                      <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1"
+                        aria-label="Status: activate to sort column ascending" style="width: 67.8px;">Khen thưởng
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1"
+                        aria-label="Actions: activate to sort column ascending" style="width: 71.8px;"> Tạm ứng
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1"
+                      aria-label="Actions: activate to sort column ascending" style="width: 71.8px;">phụ cấp
+                    </th>
+                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1"
+                    aria-label="Actions: activate to sort column ascending" style="width: 71.8px;"> ngày công
+                  </th>
+                  <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1"
+                  aria-label="Actions: activate to sort column ascending" style="width: 71.8px;"> tháng
+                </th>
+                <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1"
+                  aria-label="Actions: activate to sort column ascending" style="width: 71.8px;"> Tổng lương
+                </th>
+                    <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1"
+                    aria-label="Actions: activate to sort column ascending" style="width: 71.8px;"> Chi tiết
+                  </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr role="row" class="odd" *ngFor="let item of luong; let i = index" >
+                      <td>{{i+1}}</td>
+                      <td>{{item.id.nhanVien.tenNhanVien}}</td>
+                      <td>{{item.kyLuat.tienPhat}}</td>
+                      <td *ngIf="item.heSoLuong">{{item.heSoLuong.heSoLuong}}</td>
+                      <td *ngIf="!item.heSoLuong">0</td>
+                      <td *ngIf="item.khenThuongKl">{{item.khenThuongKl.sotien}}</td>
+                      <td *ngIf="!item.khenThuongKl">0</td>
+                      <td *ngIf="item.tamUng">{{item.tamUng.tienTamung}}</td>
+                      <td *ngIf="!item.tamUng">0</td>
+                      <td *ngIf="item.phuCap">{{item.phuCap.tienPhuCap}}</td>
+                      <td *ngIf="!item.phuCap">0</td>
+                      <td *ngIf="item.NgayCong">{{item.NgayCong}}</td>
+                      <td *ngIf="!item.NgayCong">dang tinh</td>
+                      <td>{{item.id.date}}</td>
+                      <td *ngIf="item.heSoLuong">{{0  * item.heSoLuong.heSoLuong}} VND</td>
+                       <button class="btn btn-outline-primary" routerLink="/admin/profile/{{item.id.nhanVien.id}}">View</button>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-7">
+                <div class="dataTables_paginate paging_simple_numbers" id="order-listing_paginate">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

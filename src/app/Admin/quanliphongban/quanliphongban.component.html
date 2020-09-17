@@ -1,0 +1,40 @@
+<h4 class="card-title" style="color: 'grey'">Bảng phòng ban</h4>
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+
+
+      <div class="text-center" style="margin-left: 15px">
+        <a routerLink="/admin/them" class="btn btn-info btn-block"><i class="icon-note menu-icon"></i>
+        <span class="menu-title">Thêm Phòng Ban</span></a>
+      </div>
+  <div class="row row-cols-1 row-cols-md-3" style="margin-top: 30px;"  >
+  <div class="col mb-4" *ngFor="let pb of phongbans">
+    <div class="card">
+   <div *ngIf="pb.action" style="height:205px">
+    <a class="nav-link"  routerLink="/admin/taikhoan/{{pb.id}}">
+      <img src={{pb.img}} class="card-img-top" style="width: 340px; height:190px" alt="...">
+    </a>
+   </div>
+   <div *ngIf="!pb.action"style="height:205px" >
+    <a class="nav-link">
+      <img src={{pb.img}} class="card-img-top" style="width: 340px; height:190px" alt="...">
+    </a>
+    <label class="badge badge-danger badge-fw" >Dừng hoạt động</label>
+   </div>
+      <div class="card-body">
+     <h5 class="card-title">{{pb.tenPhongBan}}</h5>
+        <p class="card-text">{{pb.ghiChu}}</p>
+      </div>
+
+
+      <div class="modal-footer">
+        <a class="btn btn-primary"  data-dismiss="modal"   routerLink="/admin/phongban/sua/{{pb.id}}"> Sửa</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+    </div>
+  </div>
+</div>
