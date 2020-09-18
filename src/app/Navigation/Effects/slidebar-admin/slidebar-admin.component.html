@@ -61,7 +61,7 @@
     <li class="nav-item">
       <a class="nav-link" routerLink="/login">
         <i class="icon-logout menu-icon"></i>
-        <span class="menu-title">Đăng xuất</span>
+        <span class="menu-title" *ngIf="!isLogged" (click)="logout()">Đăng xuất</span>
         <!-- <span class="badge badge-success">Quản lí tài khoản</span> -->
       </a>
     </li>

@@ -50,7 +50,11 @@ data: Image;
   }
   onUpdate():void {
     const id = this.route.snapshot.params.id;
-    this.nhanvien.img = this.img;
+    if(this.img !=null){
+      this.nhanvien.img = this.img;
+    }
+    this.nhanvien.img = this.nhanvien.img
+    this.nhanvien.phongbanid = this.nhanvien.phongBan.id;
     console.log(this.nhanvien);
     this.service.update(id,this.nhanvien).subscribe(
       data => {

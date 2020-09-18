@@ -20,7 +20,7 @@ import { NavigatorComponent } from './Navigation/navigator/navigator.component';
 import { ProfilesComponent } from './Navigation/Effects/profiles/profiles.component';
 import { EditComponent } from './Admin/quanliphongban/edit/edit/edit.component';
 import { ChamCongComponent } from './Admin/cham-cong/cham-cong.component';
-
+import {ProdGuardService} from './guards/prod-guard.service'
 const routes: Routes = [
   { path: '', redirectTo: 'navigator', pathMatch: 'full' },
   { path: 'navigator', component: NavigatorComponent },
@@ -32,11 +32,11 @@ const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'taikhoan/:phongbanid', component: QuanlitaikhoanComponent},
-      { path: 'phongban', component: QuanliphongbanComponent },
-      { path: 'them', component: ThemphongbanComponent },
+      { path: 'phongban', component: QuanliphongbanComponent , canActivate: [ProdGuardService], data:{expectedRole: ['admin']}},
+      { path: 'them', component: ThemphongbanComponent, canActivate: [ProdGuardService], data:{expectedRole: ['admin']} },
       { path: 'addtk', component: ThemtaikhoanComponent },
       { path: 'profile/:id', component: ProfilesComponent },
-      { path: 'addpb', component: ThemphongbanComponent },
+      { path: 'addpb', component: ThemphongbanComponent, canActivate: [ProdGuardService], data:{expectedRole: ['admin']} },
       { path: 'phongban/sua/:id', component: EditComponent },
       { path: 'themnv/:id', component: ThemnhanvienComponent },
       { path: 'chamcong', component: ChamCongComponent },

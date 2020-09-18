@@ -34,7 +34,7 @@ import { EditComponent } from './Admin/quanliphongban/edit/edit/edit.component';
 import { ThemnhanvienComponent } from './nhanvien/themnhanvien/themnhanvien.component';
 import { ChamCongComponent } from './Admin/cham-cong/cham-cong.component';
 import { LuongComponent } from './luong/luong.component';
-
+import { productoInterceptor } from './interceptors/prod-interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +71,7 @@ import { LuongComponent } from './luong/luong.component';
     BrowserAnimationsModule,
     MatSliderModule,
   ],
-  providers: [ServicephongbanService, ServicenhanvienService, LuongService ],
+  providers: [ServicephongbanService, ServicenhanvienService, LuongService ,productoInterceptor],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
